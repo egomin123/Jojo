@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body >
+<div th:insert="Fragments/Header :: defaultHeader"> </div>
+<div th:each="el : ${Sezons}" ></div>
+
+
+<form th:object="${sezons}" th:action="'/Sezon/edit/' + ${id}", method="post" class="Zapis">
+
+    <p>Название сезона:
+        <input type="text" th:value="${namesezon}" id="namesezon" name="namesezon" th:field="*{namesezon}" placeholder="Название">
+    <div th:if="${#fields.hasErrors('namesezon')}" th:errors="*{namesezon}"> </div>
+    </p>
+    <p>Дата выхода:
+        <input type="number" th:value="${datavixoda}" id="datavixoda" name="datavixoda" placeholder="Дата">
+    <div th:if="${#fields.hasErrors('datavixoda')}" th:errors="*{datavixoda}" > </div>
+    </p>
+    <p>Количество серий:
+        <input type="number" th:value="${kolvoseria}" id="kolvoseria" name="kolvoseria" placeholder="Количество серий">
+    <div th:if="${#fields.hasErrors('kolvoseria')}" th:errors="*{kolvoseria}" > </div>
+    </p>
+
+    <select  name="video" >
+        <div th:each="element : ${video}">
+            <option th:text="${element.ima}"></option>
+        </div>
+    </select>
+    <select  name="sozdatel">
+        <div th:each="element : ${sozdatel}">
+            <option th:text="${element.ima}"></option>
+        </div>
+    </select>
+    <select  name="manga" >
+        <div th:each="element : ${manga}">
+            <option th:text="${element.ima}"></option>
+        </div>
+    </select>
+    <select  name="pers">
+        <div th:each="element : ${pers}">
+            <option th:text="${element.imapers}"></option>
+        </div>
+    </select>
+    <p>Дата анонса:
+        <input type="number" th:value="${dataanonsa}" id="dataanonsa" name="dataanonsa" placeholder="Дата">
+    <div th:if="${#fields.hasErrors('dataanonsa')}" th:errors="*{dataanonsa}" > </div>
+    </p>
+    <p>Дата конца сезона:
+        <input type="number" th:value="${datakonca}" id="datakonca" name="datakonca" placeholder="Дата">
+    <div th:if="${#fields.hasErrors('datakonca')}" th:errors="*{datakonca}" > </div>
+    </p>
+
+
+    <input type="submit" value="изменить сезон" class="btn btn-seccsess"/> <br>
+    <a href="/Sezon/"> Назад</a>
+    </div>
+</form>
+</body>
+</html>

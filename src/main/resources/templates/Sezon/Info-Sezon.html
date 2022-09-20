@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body >
+
+<div th:insert="Fragments/Header :: defaultHeader"> </div>
+
+
+<div style="display: inline-grid">
+    <div th:each="el : ${sezon}" class="Zapis">
+        <p3>Название:
+            <h2 th:text="${el.getnamesezon()}"> </h2>
+            </p>
+            <p3>Дата выхода:
+                <h2 th:text="${el.getdatavixoda()}"> </h2>
+                </p>
+                <p3>Количество серий:
+                    <h2 th:text="${el.getkolvoseria()}"> </h2>
+                    </p>
+                    <p3>Видеоигра:
+                        <h2 th:text="${el.video.getima()}"> </h2>
+                        </p>
+                        <p3>Создатель:
+                            <h2 th:text="${el.sozdatel.getima()}"> </h2>
+                            </p>
+                            <p3>Манга:
+                                <h2 th:text="${el.manga.getima()}"> </h2>
+                                </p>
+                                <p3>pers:
+                                    <h2 th:text="${el.pers.getimapers()}"> </h2>
+                                    </p>
+                                    <p3>Дата анонса:
+                                        <h2 th:text="${el.getdataanonsa()}"> </h2>
+                                        </p>
+                                        <p3>Дата окончания сезона:
+                                            <h2 th:text="${el.getdatakonca()}"> </h2>
+                                            </p>
+
+                            <a th:href="'/Sezon/del/' + ${el.id}" class="btn btn-primary">Удалить</a> <br>
+                            <a th:href="'/Sezon/edit/' + ${el.id}" class="btn btn-primary">Изменить</a><br>
+                            <a href="/Sezon/">Назад к сезонам</a>
+    </div>
+
+
+
+</div>
+</body>
+</html>

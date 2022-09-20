@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body >
+<div th:insert="Fragments/Header :: defaultHeader"> </div>
+<div th:each="el : ${Seus}" ></div>
+
+
+<form th:object="${seus}" th:action="'/Seus/edit/' + ${id}", method="post" class="Zapis">
+
+    <p>Имя:
+        <input type="text" th:value="${ima}" id="ima" name="ima" th:field="*{ima}" placeholder="Имя">
+    <div th:if="${#fields.hasErrors('ima')}" th:errors="*{ima}"> </div>
+    </p>
+    <p>Возраст:
+        <input type="number" th:value="${vozrastseu}" id="vozrastseu" name="vozrastseu" placeholder="Возраст">
+    <div th:if="${#fields.hasErrors('vozrastseu')}" th:errors="*{vozrastseu}" > </div>
+    </p>
+    <p>Национальность:
+        <input type="text" th:value="${nacionalnost}" id="nacionalnost" name="nacionalnost" th:field="*{nacionalnost}" placeholder="Национальность">
+    <div th:if="${#fields.hasErrors('nacionalnost')}" th:errors="*{nacionalnost}" > </div>
+    </p>
+
+    <input type="submit" value="изменить сэйю" class="btn btn-seccsess"/> <br>
+    <a href="/Seus/"> Назад</a>
+    </div>
+</form>
+</body>
+</html>

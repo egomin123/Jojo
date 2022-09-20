@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body >
+<div th:insert="Fragments/Header :: defaultHeader"> </div>
+
+  <div style="display: inline-grid">
+    <form th:object="${stands}" action="/Stands/add" method="post" class="Zapis">
+
+
+
+      <p>Имя:
+        <input type="text" id="ima" name="ima" placeholder="Имя">
+      <div th:errors="*{ima}" th:if="${#fields.hasErrors('ima')}" > </div>
+      </p>
+      <p>способность:
+        <input type="text" id="skill" name="skill" placeholder="способность">
+      <div th:errors="*{skill}" th:if="${#fields.hasErrors('skill')}"  > </div>
+      </p>
+      <p>Характеристика:
+        <input type="text" id="haracter" name="haracter" placeholder="Характеристика">
+      <div th:errors="*{haracter}" th:if="${#fields.hasErrors('haracter')}"  > </div>
+      </p>
+
+
+  </div>
+
+<input type="submit" value="Добавить стенда" class="btn btn-seccsess"/>
+<a href="/Stands/"> Назад</a>
+
+
+</div>
+</form>
+
+</body>
+</html>
